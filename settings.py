@@ -1,0 +1,20 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+POSTGRES_PORT = os.getenv("POSTGRES_PORT")
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+
+SECRET_KEY_JWT = os.getenv("SECRET_KEY_JWT")
+ALGORITHM_JWT = os.getenv("ALGORITHM_JWT")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+
+LDAP_ORGANIZATION = os.getenv('LDAP_ORGANIZATION')
+LDAP_SERVER = os.getenv('LDAP_SERVER')
+LDAP_DOMAIN = os.getenv('LDAP_DOMAIN')
+LDAP_USERNAME = os.getenv('LDAP_USERNAME')
+LDAP_PASSWORD = os.getenv('LDAP_PASSWORD')
