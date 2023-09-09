@@ -4,14 +4,18 @@ from loguru import logger
 
 
 def logging(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if asyncio.iscoroutinefunction(func):
-            return _logging_async(func, *args, **kwargs)
-        else:
+    if asyncio.iscoroutinefunction(func):
+        @wraps(func)
+        async def async_wrapper(*args, **kwargs):
+            return await _logging_async(func, *args, **kwargs)
+
+        return async_wrapper
+    else:
+        @wraps(func)
+        def sync_wrapper(*args, **kwargs):
             return _logging_sync(func, *args, **kwargs)
 
-    return wrapper
+        return sync_wrapper
 
 
 def _logging_sync(func, *args, **kwargs):
